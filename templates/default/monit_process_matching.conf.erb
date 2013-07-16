@@ -1,0 +1,7 @@
+check process <%= @name %> matching "<%= @match %>"
+   start program = "<%= @start %>" with timeout 300 seconds
+   stop  program = "<%= @stop %>" with timeout 300 seconds
+<% unless @host.nil? -%>
+   if failed host <%= @host %> port <%= @port %>
+        protocol HTTP request "<%= @request_path %>" then alert
+<% end -%>
